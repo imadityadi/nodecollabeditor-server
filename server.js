@@ -28,7 +28,7 @@ const defValue = "";
 
 const io = require("socket.io")(3001, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: "https://collabeditor-client.onrender.com",
     methods: ["GET", "POST"],
   },
 });
@@ -38,7 +38,8 @@ io.on("connection", (socket) => {
     // joned to a private room
     socket.join(documentId);
     // loaded data for that room
-    socket.emit("load-document", document.data);
+    console.log(documentId);
+    socket.emit("load-document", document?.data);
     // sending realtime changes to room
     socket.on("send-changes", (delta) => {
       socket.broadcast.to(documentId).emit("receive-changes", delta);

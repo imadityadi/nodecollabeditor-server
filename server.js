@@ -1,8 +1,9 @@
 // mongooose connection
+require("dotenv").config();
 const mongoose = require("mongoose");
 const Document = require("./Document");
-const password = encodeURIComponent("uIe7ni5RLv0OkNAW");
-const username = encodeURIComponent("adityaksi028");
+const password = encodeURIComponent(process.env.PASS);
+const username = encodeURIComponent(process.env.USERNAME);
 var connectionString = `mongodb+srv://${username}:${password}@editor-data.knfygrr.mongodb.net`;
 
 // mongoose.connect(connectionString);
